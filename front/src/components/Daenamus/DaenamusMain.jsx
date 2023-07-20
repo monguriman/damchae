@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Search from '../Global/Search';
 import DaenamusCard from '../global/DaenamusCard';
+import DaenamusWrite from './DaenamusWrite';
+import { Link } from 'react-router-dom';
 
 
 const DaenamusMain = () => {
@@ -33,25 +35,10 @@ const DaenamusMain = () => {
 
         <div className="flex justify-between mb-4">
           <div>
-            <button
-              onClick={handleButtonClick}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md"
-            >
+            {/* 버튼 대신 Link 컴포넌트를 사용하여 새로운 글쓰기 페이지로 이동하는 링크 생성 */}
+            <Link to="/daenamus/write" className="bg-blue-500 text-white px-4 py-2 rounded-md">
               글쓰기
-            </button>
-            {showStoryCreateModal && (
-              <>
-                <StoryCreateModal
-                  showStoryCreateModal={showStoryCreateModal}
-                  handleModalClose={handleModalClose}
-                />
-                <div
-                  onClick={handleModalClose}
-                  className="fixed inset-0 bg-black opacity-60 cursor-default"
-                  aria-hidden="true"
-                />
-              </>
-            )}
+            </Link>
           </div>
 
           <ul className="flex space-x-4">
@@ -112,7 +99,7 @@ const DaenamusMain = () => {
           </ul>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {/* 게시글 카드를 데이터에 맞게 반복해서 생성 */}
           {Array.from({ length: 12 }).map((_, index) => (
             <div key={index}>

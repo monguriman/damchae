@@ -6,6 +6,10 @@ import MyStories from '../components/MyStories/MyStories';
 import LoginForm from '../components/User/Loginform';
 import RegisterForm from '../components/User/Registerform';
 import StoryRead from '../components/Stories/StoryRead';
+import DaenamusMain from '../components/Daenamus/DaenamusMain';
+import DaenamusWrite from '../components/Daenamus/DaenamusWrite';
+import DaenamusCardDetail from '../components/Daenamus/DaenamusCardDetail';
+
 
 const Router = () => {
 	return (
@@ -27,6 +31,12 @@ const Router = () => {
 				</Route>
 
 				<Route path="story/read" element={<StoryRead />} />
+				<Route path="daenamus" element={<DaenamusMain />} />
+				<Route path="daenamus/write" element={<DaenamusWrite />} />
+				<Route path="daenamus/:id" element={<DaenamusCardDetail />} />
+				
+				
+				
 
 				{/* <Route path="/daenamus" element={<Stories />}>
 				<Route path=":index" element={<Stories />} />
