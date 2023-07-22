@@ -1,4 +1,4 @@
-import { tokenService } from '../jwt';
+import { tokenService } from '../services/tokenService.js';
 
 const tokenVerify = (req, res, next) => {
 	// Request headers에 토큰이 없으면 오류를 반환한다.
