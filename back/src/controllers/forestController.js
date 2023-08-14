@@ -188,8 +188,7 @@ class ForestController {
       if (postUser.userInfo.toString() === userId) {
         const post = await ForestService.deletePost({ forestId });
 
-        const result = await ForestService.populateForestPost(post, 'userInfo');
-        return res.status(200).send(result);
+        return res.status(200).send(post);
       } else {
         throw new Error('스토리 삭제 권한이 없습니다.');
       }
@@ -206,11 +205,6 @@ class ForestController {
         throw new Error('스토리를 찾을 수 없습니다');
       }
 
-      // const result = await ForestService.populateForestPost(
-      //   forestInfo,
-      //   'userInfo',
-      // );
-
       const result = await ForestService.populateForestInfo(
         forestInfo,
         'userInfo',
@@ -221,6 +215,7 @@ class ForestController {
       next(error);
     }
   }
+
   static async getUserPosts(req, res, next) {
     try {
       const userId = req.currentUserId; // 로그인한 사용자의 ID

@@ -25,7 +25,9 @@ class forestModel {
 
   static async findOneAndDelete({ forestId }) {
     const deletedPost = await ForestPost.deleteOne({ _id: forestId });
-    return deletedPost;
+
+    const deletePopulate = await ForestPost.populate(deletedPost, 'userInfo');
+    return deletePopulate;
   }
 
   static async findByForest(skip, limit, getAlls) {
