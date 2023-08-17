@@ -39,15 +39,20 @@ const DaenamuTextEditor = () => {
 	};
 
 	const { handleImageUpload, loading } = useImageUpload();
+	const timerId = useRef(null);
 
 	useEffect(() => {
 		if (isModalOpen) {
-			setTimeout(() => {
+			timerId.current = setTimeout(() => {
 				setIsModalOpen(false);
 				handleSubmit();
 			}, 3000);
 		}
+		return () => {
+			clearTimeout(timerId.current);
+		};
 	}, [isModalOpen]);
+
 	return (
 		<>
 			<h3 className="font-semibold">제목</h3>
