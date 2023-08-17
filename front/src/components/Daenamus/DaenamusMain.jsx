@@ -43,10 +43,6 @@ const DaenamusMain = () => {
 	useEffect(() => {
 		fetchData();
 		setIsDataLoading(true);
-	}, []);
-
-	useEffect(() => {
-		fetchData();
 	}, [selectedMBTI, selectedTab]);
 
 	const select = (value) => {

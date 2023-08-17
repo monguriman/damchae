@@ -113,6 +113,17 @@ const DaenamuRead = () => {
 		setViewerKey((prevKey) => prevKey + 1);
 	}, [forest.content]);
 
+	const getProfileImg = (userInfo) => {
+		if (isDataLoading) {
+			if (userInfo?.profileImg) {
+				return userInfo.profileImg.path;
+			} else if (userInfo?.mbtiImg) {
+				return userInfo.mbtiImg;
+			}
+		}
+		return '/images/default-image.jpg';
+	};
+
 	return (
 		<div className={`w-4/5 max-w-2xl mx-auto `}>
 			<BackButton />
@@ -197,18 +208,14 @@ const DaenamuRead = () => {
 										<div className="flex flex-row space-x-2 mt-5">
 											<img
 												className="rounded-full w-10 h-10 object-cover bg-white"
-												src={
-													isDataLoading && forest.userInfo?.profileImg
-														? forest.userInfo?.profileImg?.path
-														: isDataLoading && forest.userInfo?.mbtiImg
-														? forest.userInfo?.mbtiImg
-														: '/images/default-image.jpg'
-												}
+												src={getProfileImg(forest.userInfo)}
 												alt=""
 											/>
 											<div className="flex flex-col ">
 												<p className="w-20 text-sm ">
-													{isDataLoading && forest.userInfo.nickname ? forest.userInfo.nickname : '알 수 없음' }
+													{isDataLoading && forest.userInfo.nickname
+														? forest.userInfo.nickname
+														: '알 수 없음'}
 												</p>
 												<p className="text-xs text-gray-500">
 													{isDataLoading && forest.userInfo?.mbti}

@@ -15,10 +15,6 @@ const DaenamuCardMap = ({ fetchData, isDataLoading }) => {
 	);
 
 	useEffect(() => {
-		fetchData();
-	}, []);
-
-	useEffect(() => {
 		fetchData(currentPage);
 	}, [currentPage]);
 
@@ -29,7 +25,7 @@ const DaenamuCardMap = ({ fetchData, isDataLoading }) => {
 					<>
 						{forests && forests.length > 0 ? (
 							<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 text-base font-medium">
-								{forests?.map((forest) => (
+								{forests.map((forest) => (
 									<div key={forest._id}>
 										<DaenamuCard data={forest} />
 									</div>
